@@ -2,6 +2,13 @@ plugins {
     id "org.jetbrains.kotlin.jvm"
 }
 
+// Apply Hilt plugin
+apply plugin: 'kotlin-kapt'
+
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.4.1")
+    // Hilt
+    implementation "com.google.dagger:hilt-core:2.39"
+    kapt "com.google.dagger:hilt-compiler:2.39"
+
 }
