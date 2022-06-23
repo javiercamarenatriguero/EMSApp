@@ -1,4 +1,4 @@
-package com.akole.energyproviderapp.domain
+package com.akole.energyproviderapp.domain.datastores
 
 import com.akole.energyproviderapp.domain.models.EnergyLiveData
 

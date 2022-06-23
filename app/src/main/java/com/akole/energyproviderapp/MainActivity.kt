@@ -10,7 +10,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.akole.energyproviderapp.domain.EnergyProviderListener
 import com.akole.energyproviderapp.ui.theme.EnergyProviderAppTheme
 
 class MainActivity : ComponentActivity() {
