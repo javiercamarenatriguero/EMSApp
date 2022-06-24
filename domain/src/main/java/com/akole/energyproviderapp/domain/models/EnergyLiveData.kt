@@ -8,4 +8,4 @@ data class EnergyLiveData (
     val quasarTotalChargedEnergy: Float,
     val quasarTotalDischargedEnergy: Float,
     val quasarCurrentEnergy: Float
-    )
+)

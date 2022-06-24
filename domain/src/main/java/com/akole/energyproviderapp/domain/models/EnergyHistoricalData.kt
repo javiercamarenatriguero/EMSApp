@@ -6,4 +6,4 @@ data class EnergyHistoricalData (
     val gridActivePower: Float,
     val buildingActivePower: Float,
     val timestamp: String
-    )
+)
