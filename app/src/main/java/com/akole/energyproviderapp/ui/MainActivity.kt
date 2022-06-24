@@ -11,8 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.akole.energyproviderapp.domain.datastores.EMSListener
-import com.akole.energyproviderapp.domain.models.EnergyLiveData
 import com.akole.energyproviderapp.domain.usecases.GetHistoricalData
 import com.akole.energyproviderapp.domain.usecases.StartLiveDataConnection
 import com.akole.energyproviderapp.ui.navigation.Navigation
@@ -22,7 +20,7 @@ import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity(), EMSListener {
+class MainActivity : ComponentActivity() {
     @Inject
     lateinit var getHistoricalData: GetHistoricalData
     @Inject
@@ -41,17 +39,13 @@ class MainActivity : ComponentActivity(), EMSListener {
                         getHistoricalData().collect {
                             it
                         }
-                        startLiveDataConnection(this@MainActivity).collect {
+                        startLiveDataConnection().collect {
                             it
                         }
                     }
                 }
             }
         }
-    }
-
-    override fun onData(data: EnergyLiveData) {
-        TODO("Not yet implemented")
     }
 }
 
