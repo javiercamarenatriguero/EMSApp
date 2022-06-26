@@ -1,13 +1,13 @@
 package com.akole.energyproviderapp.domain.usecases
 
-import com.akole.energyproviderapp.domain.datastores.EMSDataStore
+import com.akole.energyproviderapp.domain.datasources.EMSDataSource
 import kotlinx.coroutines.flow.Flow
 
 class StopLiveDataConnection(
-    private val EMSDataStore: EMSDataStore
+    private val EMSDataSource: EMSDataSource
 ) {
     suspend operator fun invoke(): Flow<StopLiveDataConnectionResponse> =
-        EMSDataStore.stopLiveDataConnection()
+        EMSDataSource.stopLiveDataConnection()
 }
 
 sealed class StopLiveDataConnectionResponse {

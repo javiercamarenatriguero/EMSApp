@@ -13,10 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.akole.energyproviderapp.domain.usecases.GetHistoricalData
 import com.akole.energyproviderapp.domain.usecases.StartLiveDataConnection
+import com.akole.energyproviderapp.domain.usecases.StopLiveDataConnection
 import com.akole.energyproviderapp.ui.navigation.Navigation
 import com.akole.energyproviderapp.ui.theme.EnergyProviderAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -25,6 +28,9 @@ class MainActivity : ComponentActivity() {
     lateinit var getHistoricalData: GetHistoricalData
     @Inject
     lateinit var startLiveDataConnection: StartLiveDataConnection
+    @Inject
+    lateinit var stopLiveDataConnection: StopLiveDataConnection
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,11 +42,18 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Navigation(rememberEnergyProviderAppState().navController)
                     LaunchedEffect(true) {
-                        getHistoricalData().collect {
-                            it
-                        }
                         startLiveDataConnection().collect {
                             it
+                        }
+                        delay(6000)
+                        stopLiveDataConnection().collect {
+                            it
+                            println("stop -> ${it}")
+                        }
+                        delay(5000)
+                        getHistoricalData().collect {
+                            it
+                            println("received -> ${it}")
                         }
                     }
                 }

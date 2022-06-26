@@ -1,6 +1,9 @@
 buildscript {
     ext {
         compose_version = '1.1.0'
+        hilt_version = '2.39'
+        work_version = '2.7.1'
+        coroutines_core_jvm = '1.4.1'
     }
 
     dependencies {

@@ -1,14 +1,14 @@
 package com.akole.energyproviderapp.domain.usecases
 
-import com.akole.energyproviderapp.domain.datastores.EMSDataStore
+import com.akole.energyproviderapp.domain.datasources.EMSDataSource
 import com.akole.energyproviderapp.domain.models.EnergyHistoricalData
 import kotlinx.coroutines.flow.Flow
 
 class GetHistoricalData(
-    private val emsDataStore: EMSDataStore
+    private val emsDataSource: EMSDataSource
 ) {
     suspend operator fun invoke(): Flow<GetHistoricalDataResponse> =
-        emsDataStore.getHistoricalData()
+        emsDataSource.getHistoricalData()
 }
 
 sealed class GetHistoricalDataResponse {
