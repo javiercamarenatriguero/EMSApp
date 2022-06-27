@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">EnergyProviderApp</string>
+    <!-- Home -->
+    <string name="home_quasar_discharged_energy_text">Total Discharged Energy</string>
+    <string name="home_quasar_charged_energy_text">Total Charged Energy</string>
+    <string name="home_energy_value_text">%1$s kWh</string>
+    <string name="home_power_value_text">%1$s kW</string>
+    <string name="home_source_grid_text">Grid Power</string>
+    <string name="home_source_solar_text">Solar Power</string>
+    <string name="home_source_quasar_text">Quasar Power</string>
+    <string name="home_building_demand_text">Building Demand Power</string>
+    <string name="home_statistics_value_text">%1$s \%%</string>
+    <string name="home_see_more_details_text">Click to see more details</string>
 </resources>

@@ -60,6 +60,10 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.0.0-rc01")
+    // Icons
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
     // Internal dependencies
     implementation project(path: ':data')
     implementation project(path: ':domain')

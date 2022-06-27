@@ -8,6 +8,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.akole.energyproviderapp.ui.navigation.NavFeature
+import com.akole.energyproviderapp.ui.navigation.navigatePoppingUpToStartDestination
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
@@ -27,4 +29,8 @@ class EnergyProviderAppState(
     val currentRoute: String
         @Composable get() = navController.currentBackStackEntryAsState().value?.destination?.route
             ?: ""
+
+    fun onNavItemClick(navFeature: NavFeature) {
+        navController.navigatePoppingUpToStartDestination(navFeature.route)
+    }
 }
