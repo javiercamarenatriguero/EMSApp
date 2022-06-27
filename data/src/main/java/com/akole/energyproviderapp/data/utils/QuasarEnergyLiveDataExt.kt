@@ -4,25 +4,28 @@ import com.akole.energyproviderapp.data.entity.QuasarEnergyLiveData
 import com.akole.energyproviderapp.domain.models.EnergyHistoricalData
 import com.akole.energyproviderapp.domain.models.EnergyLiveData
 
-internal fun getEnergyAmount(power: Float, timeDiffMilliseconds: Long): Float {
-    // Power (kW) * Time gap (Hours)
-    return power * timeDiffMilliseconds * MILLISECONDS_TO_HOURS_FACTOR
-}
+internal fun Float.getEnergyAmount(timeDiffMilliseconds: Long): Float =
+    // Power (kW) * Time gap between samples (Hours)
+    this * ((timeDiffMilliseconds.toFloat() / MILLISECONDS_INTO_HOUR))
 
-private const val MILLISECONDS_TO_HOURS_FACTOR = 1 / 3_600_000
+private const val MILLISECONDS_INTO_HOUR = 3_600_000
 
-internal fun QuasarEnergyLiveData.parseToModel(): EnergyLiveData =
+internal fun QuasarEnergyLiveData.parseToModel(
+    quasarsCurrentEnergy: Float,
+    quasarsTotalChargedEnergy: Float,
+    quasarsTotalDischargedEnergy: Float
+): EnergyLiveData =
     EnergyLiveData(
         solarPower = solarPower,
         gridPower = gridPower,
         buildingPowerDemand = buildingPowerDemand,
         quasarsPower = quasarsPower,
-        quasarCurrentEnergy = getEnergyAmount(power = quasarsPower, 5000),
-        quasarTotalChargedEnergy = 0.0f,
-        quasarTotalDischargedEnergy = 0.0f
+        quasarsCurrentEnergy = quasarsCurrentEnergy,
+        quasarsTotalChargedEnergy = quasarsTotalChargedEnergy,
+        quasarsTotalDischargedEnergy = quasarsTotalDischargedEnergy
     )
 
-internal fun QuasarEnergyLiveData.parseToHistoricalDataModel(timestamp: String): EnergyHistoricalData =
+internal fun QuasarEnergyLiveData.parseToHistoricalDataModel(): EnergyHistoricalData =
     EnergyHistoricalData(
         solarActivePower = solarPower,
         gridActivePower = gridPower,

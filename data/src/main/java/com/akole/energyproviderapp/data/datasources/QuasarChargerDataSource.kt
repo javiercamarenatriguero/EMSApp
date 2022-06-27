@@ -11,8 +11,11 @@ class QuasarChargerDataSource @Inject constructor(
 ) : EMSDataSource {
     override suspend fun startLiveDataConnection(): Flow<StartLiveDataConnectionResponse> {
         return flow {
+            emit(StartLiveDataConnectionResponse.Loading)
             adapter.startLiveData()
-            emit(StartLiveDataConnectionResponse.Success)
+            adapter.liveData.collect { liveData ->
+                emit(StartLiveDataConnectionResponse.OnData(liveData))
+            }
         }
     }
 
@@ -21,7 +24,6 @@ class QuasarChargerDataSource @Inject constructor(
             adapter.stopLiveData()
             emit(StopLiveDataConnectionResponse.Success)
         }
-
     }
 
     override suspend fun getHistoricalData(): Flow<GetHistoricalDataResponse> {

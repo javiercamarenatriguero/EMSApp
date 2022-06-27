@@ -19,7 +19,6 @@ import com.akole.energyproviderapp.ui.theme.EnergyProviderAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -43,17 +42,20 @@ class MainActivity : ComponentActivity() {
                     Navigation(rememberEnergyProviderAppState().navController)
                     LaunchedEffect(true) {
                         startLiveDataConnection().collect {
-                            it
+                            println("start -> ${it}")
                         }
-                        delay(6000)
-                        stopLiveDataConnection().collect {
-                            it
-                            println("stop -> ${it}")
-                        }
-                        delay(5000)
+                    }
+
+                    LaunchedEffect(true) {
+                        delay(20000)
                         getHistoricalData().collect {
                             it
                             println("received -> ${it}")
+                        }
+                        delay(2000)
+                        stopLiveDataConnection().collect {
+                            it
+                            println("stop -> ${it}")
                         }
                     }
                 }

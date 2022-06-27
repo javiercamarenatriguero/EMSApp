@@ -5,5 +5,5 @@ data class QuasarEnergyLiveData (
     val quasarsPower: Float,
     val gridPower: Float,
     val buildingPowerDemand: Float,
-    val timestamp: String
+    val timestamp: Long
 )

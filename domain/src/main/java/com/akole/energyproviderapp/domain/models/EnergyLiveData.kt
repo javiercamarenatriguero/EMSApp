@@ -5,7 +5,7 @@ data class EnergyLiveData (
     val quasarsPower: Float,
     val gridPower: Float,
     val buildingPowerDemand: Float,
-    val quasarTotalChargedEnergy: Float,
-    val quasarTotalDischargedEnergy: Float,
-    val quasarCurrentEnergy: Float
+    val quasarsTotalChargedEnergy: Float,
+    val quasarsTotalDischargedEnergy: Float,
+    val quasarsCurrentEnergy: Float
 )
