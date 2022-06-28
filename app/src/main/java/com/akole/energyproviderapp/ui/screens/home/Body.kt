@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
-import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.akole.energyproviderapp.R
+import com.akole.energyproviderapp.ui.screens.common.LoadingProgressBar
 import com.akole.energyproviderapp.ui.screens.home.cards.QuasarDataCard
 import com.akole.energyproviderapp.ui.screens.home.cards.SourcesDataCard
 import com.akole.energyproviderapp.ui.screens.home.cards.StatisticsDataCard
@@ -42,7 +42,7 @@ fun Body(
 
         ) {
             if (viewState.isConnectionLoading) {
-                LoadingProgress()
+                LoadingProgressBar()
             } else if (viewState.isConnectionStopped) {
                 StartConnectionButton(onEventHandler = onEventHandler)
             } else {
@@ -56,15 +56,6 @@ fun Body(
             }
         }
     }
-}
-
-@Composable
-fun LoadingProgress() {
-    LinearProgressIndicator(
-        backgroundColor = Color.LightGray,
-        color = Color.Blue,
-        modifier = Modifier.padding(30.dp)
-    )
 }
 
 @Composable

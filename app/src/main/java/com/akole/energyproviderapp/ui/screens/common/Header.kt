@@ -1,4 +1,4 @@
-package com.akole.energyproviderapp.ui.screens.home
+package com.akole.energyproviderapp.ui.screens.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

@@ -1,4 +1,4 @@
-package com.akole.energyproviderapp.ui.screens.home
+package com.akole.energyproviderapp.ui.screens.details
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,9 +9,8 @@ import androidx.compose.ui.Modifier
 import com.akole.energyproviderapp.ui.screens.common.Header
 
 @Composable
-fun HomeScreenContent(
+fun DetailsScreenContent(
     viewState: UiState,
-    onEventHandler: (HomeViewModel.ViewEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -21,8 +20,7 @@ fun HomeScreenContent(
     ) {
         Header()
         Body(
-            viewState = viewState,
-            onEventHandler = onEventHandler
+            viewState = viewState
         )
     }
 }

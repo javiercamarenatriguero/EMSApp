@@ -28,7 +28,7 @@ fun StatisticsDataCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(15.dp),
+            .padding(20.dp),
         elevation = 10.dp,
         onClick = {
             onEventHandler(HomeViewModel.ViewEvent.SeeDetailsClicked)
@@ -56,7 +56,7 @@ fun StatisticsDataCard(
                 text = stringResource(id = R.string.home_see_more_details_text),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(5.dp)
+                    .padding(8.dp)
             )
         }
     }
@@ -79,8 +79,7 @@ fun StatisticsPowerData(
         Icon(imageVector = icon, contentDescription = "")
         LinearProgressIndicator(
             progress = value / 100,
-            color = color,
-            modifier = Modifier.width(220.dp)
+            color = color
         )
         Text(
             text = stringResource(
