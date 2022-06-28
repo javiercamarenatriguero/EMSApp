@@ -35,7 +35,6 @@ class QuasarChargerAdapter {
 
     fun stopLiveData() {
         isServiceActive = false
-        scope.cancel()
         resetSession()
     }
 

@@ -31,9 +31,6 @@ private fun NavGraphBuilder.homeNav(navController: NavController) {
     ) {
         composable(NavCommand.ContentType(NavFeature.HOME)) {
             HomeScreen(
-                onBackClick = {
-                    navController.popBackStack()
-                },
                 onDetailsClick = {
                     navController.navigate(NavFeature.DETAILS.route)
                 }

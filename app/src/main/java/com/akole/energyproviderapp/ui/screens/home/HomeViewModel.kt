@@ -12,6 +12,7 @@ import com.akole.energyproviderapp.domain.usecases.StopLiveDataConnectionRespons
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,22 +31,28 @@ class HomeViewModel @Inject constructor(
 
     init {
         updateState(
-            showStartConnectionButton = true,
+            isConnectionStopped = true,
             isConnectionLoading = false,
             isConnectionError = false
         )
-        startLiveDataService()
     }
 
     private fun startLiveDataService() {
         viewModelScope.launch {
-            startLiveDataConnection().collect { response ->
+            startLiveDataConnection().collectLatest { response ->
                 when (response) {
+                    is StartLiveDataConnectionResponse.Success -> {
+                        updateState(
+                            isConnectionLoading = false,
+                            isConnectionError = false,
+                            isConnectionStopped = false
+                        )
+                    }
                     is StartLiveDataConnectionResponse.Loading -> {
                         updateState(
                             isConnectionLoading = true,
                             isConnectionError = false,
-                            showStartConnectionButton = false
+                            isConnectionStopped = false
                         )
                     }
                     is StartLiveDataConnectionResponse.OnData -> {
@@ -57,16 +64,15 @@ class HomeViewModel @Inject constructor(
                             buildingDemandPower = response.energyLiveData.buildingPowerDemand,
                             solarPower = response.energyLiveData.solarPower,
                             gridPower = response.energyLiveData.gridPower,
-                            showStartConnectionButton = false,
-                            isConnectionLoading = false,
-                            isConnectionError = false
+                            isConnectionError = false,
+                            isConnectionLoading = false
                         )
                     }
                     is StartLiveDataConnectionResponse.Error -> {
                         updateState(
                             isConnectionLoading = false,
                             isConnectionError = true,
-                            showStartConnectionButton = true
+                            isConnectionStopped = true
                         )
                     }
                 }
@@ -76,25 +82,25 @@ class HomeViewModel @Inject constructor(
 
     private fun stopLiveDataService() {
         viewModelScope.launch {
-            stopLiveDataConnection().collect { response ->
+            stopLiveDataConnection().collectLatest { response ->
                 when (response) {
                     is StopLiveDataConnectionResponse.Success ->
                         updateState(
                             isConnectionError = false,
                             isConnectionLoading = false,
-                            showStartConnectionButton = true
+                            isConnectionStopped = true
                         )
                     is StopLiveDataConnectionResponse.Error ->
                         updateState(
                             isConnectionError = true,
                             isConnectionLoading = false,
-                            showStartConnectionButton = true
+                            isConnectionStopped = true
                         )
                     is StopLiveDataConnectionResponse.Loading ->
                         updateState(
                             isConnectionError = false,
                             isConnectionLoading = true,
-                            showStartConnectionButton = false
+                            isConnectionStopped = false
                         )
                 }
             }
@@ -105,7 +111,7 @@ class HomeViewModel @Inject constructor(
         when (this) {
             ViewEvent.SeeDetailsClicked -> onSeeDetailsClicked()
             ViewEvent.StartConnectionClicked -> onStartConnectionButtonClicked()
-            ViewEvent.OnBackPressed -> onBackPressed()
+            ViewEvent.StopConnectionClicked -> onStopConnectionButtonClicked()
         }
     }
 
@@ -117,7 +123,7 @@ class HomeViewModel @Inject constructor(
         startLiveDataService()
     }
 
-    private fun onBackPressed() {
+    private fun onStopConnectionButtonClicked() {
         stopLiveDataService()
     }
 
@@ -133,8 +139,8 @@ class HomeViewModel @Inject constructor(
 
     sealed interface ViewEvent {
         object StartConnectionClicked: ViewEvent
+        object StopConnectionClicked: ViewEvent
         object SeeDetailsClicked: ViewEvent
-        object OnBackPressed: ViewEvent
     }
 
     private fun updateState(
@@ -145,7 +151,7 @@ class HomeViewModel @Inject constructor(
         buildingDemandPower: Float = state.buildingDemandPower,
         solarPower: Float = state.solarPower,
         gridPower: Float = state.gridPower,
-        showStartConnectionButton: Boolean = state.showStartConnectionButton,
+        isConnectionStopped: Boolean = state.isConnectionStopped,
         isConnectionLoading: Boolean = state.isConnectionLoading,
         isConnectionError: Boolean = state.isConnectionError
     ) {
@@ -157,7 +163,7 @@ class HomeViewModel @Inject constructor(
             buildingDemandPower = buildingDemandPower,
             solarPower = solarPower,
             gridPower = gridPower,
-            showStartConnectionButton = showStartConnectionButton,
+            isConnectionStopped = isConnectionStopped,
             isConnectionLoading = isConnectionLoading,
             isConnectionError = isConnectionError
         )

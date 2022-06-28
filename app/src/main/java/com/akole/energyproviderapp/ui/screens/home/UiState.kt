@@ -8,7 +8,7 @@ data class UiState(
     val buildingDemandPower: Float = 0.0f,
     val solarPower: Float = 0.0f,
     val gridPower: Float = 0.0f,
-    val showStartConnectionButton: Boolean = false,
+    val isConnectionStopped: Boolean = false,
     val isConnectionLoading: Boolean = false,
     val isConnectionError: Boolean = false
 )

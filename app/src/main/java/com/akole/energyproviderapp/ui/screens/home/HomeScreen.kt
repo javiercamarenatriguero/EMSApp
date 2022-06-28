@@ -1,6 +1,5 @@
 package com.akole.energyproviderapp.ui.screens.home
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -11,8 +10,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    onDetailsClick: () -> Unit,
-    onBackClick: () -> Unit
+    onDetailsClick: () -> Unit
 ) {
     Box(modifier = Modifier
         .fillMaxSize()
@@ -25,14 +23,10 @@ fun HomeScreen(
     LaunchedEffect(viewModel.oneShotEvents) {
         viewModel.oneShotEvents.collect { event ->
             when(event) {
-                is HomeViewModel.OneShotEvent.GoToDetails -> onDetailsClick
+                is HomeViewModel.OneShotEvent.GoToDetails -> {
+                    onDetailsClick()
+                }
             }
         }
-    }
-
-
-    BackHandler {
-        viewModel.on(HomeViewModel.ViewEvent.OnBackPressed)
-        onBackClick()
     }
 }
