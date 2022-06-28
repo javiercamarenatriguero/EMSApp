@@ -30,11 +30,15 @@ class QuasarChargerDataSource @Inject constructor(
     }
 
     override suspend fun getHistoricalData(): Flow<GetHistoricalDataResponse> {
-        return flowOf(GetHistoricalDataResponse.Success(adapter.getHistoricalDataList()))
+        return flow {
+            emit(GetHistoricalDataResponse.Loading)
+            delay(SIMULATED_ADAPTER_CONNECTION_DELAY)
+            emit(GetHistoricalDataResponse.Success(adapter.getHistoricalDataList()))
+        }
     }
 
     companion object {
         // Added delay in order to simulated a connecting delay with the adapter
-        private const val SIMULATED_ADAPTER_CONNECTION_DELAY = 2000L
+        private const val SIMULATED_ADAPTER_CONNECTION_DELAY = 1000L
     }
 }
