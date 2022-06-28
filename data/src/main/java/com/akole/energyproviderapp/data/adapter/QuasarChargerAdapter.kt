@@ -91,7 +91,7 @@ class QuasarChargerAdapter {
 
     companion object {
         // Coroutine timer
-        private const val LIVE_DATA_SAMPLING_RATE_MS = 2000L
+        private const val LIVE_DATA_SAMPLING_RATE_MS = 1000L
         // Emulated EMS params (random values)
         private const val SOLAR_POWER_BASE_VALUE = 30f
         private val SOLAR_POWER_DIFF_VALUES = (-20..20)

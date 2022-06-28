@@ -13,6 +13,12 @@
     <string name="home_see_more_details_text">Click to see more details</string>
     <string name="home_start_button_text">Start Connection</string>
     <string name="home_stop_button_text">Stop Connection</string>
+
     <!-- Details -->
+    <string name="details_solar_label">Solar Power (kW)</string>
+    <string name="details_grid_label">Grid Power (kW)</string>
+    <string name="details_quasar_label">Quasar Power (kW)</string>
+    <string name="details_building_label">Building Demand Power (kW)</string>
+    <string name="details_empty_data">There is no data recorded. Please check it out later.</string>
 
 </resources>

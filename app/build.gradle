@@ -66,6 +66,7 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
     // Charts library
     implementation 'com.github.madrapps:plot:0.1.1'
+    implementation 'ma.hu:compose-charts:0.3.5'
     // Internal dependencies
     implementation project(path: ':data')
     implementation project(path: ':domain')
