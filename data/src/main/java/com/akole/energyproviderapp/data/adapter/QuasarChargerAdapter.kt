@@ -45,7 +45,6 @@ class QuasarChargerAdapter {
     // This method emulates a live data provider loop as an external sensor
     private fun startLiveDataProvider() {
         scope.launch {
-            delay(CONNECTING_INITIAL_DELAY_MS)
             while (isActive && isServiceActive) {
                 delay(LIVE_DATA_SAMPLING_RATE_MS)
                 val mockLiveData = getMockQuasarEnergyLiveData()
@@ -92,7 +91,6 @@ class QuasarChargerAdapter {
 
     companion object {
         // Coroutine timer
-        private const val CONNECTING_INITIAL_DELAY_MS = 2000L
         private const val LIVE_DATA_SAMPLING_RATE_MS = 2000L
         // Emulated EMS params (random values)
         private const val SOLAR_POWER_BASE_VALUE = 30f

@@ -41,18 +41,22 @@ fun Body(
                 .background(Color.White)
 
         ) {
-            if (viewState.isConnectionLoading) {
-                LoadingProgressBar()
-            } else if (viewState.isConnectionStopped) {
-                StartConnectionButton(onEventHandler = onEventHandler)
-            } else {
-                QuasarDataCard(viewState = viewState)
-                SourcesDataCard(viewState = viewState)
-                StatisticsDataCard(
-                    viewState = viewState,
-                    onEventHandler = onEventHandler
-                )
-                StopConnectionButton(onEventHandler = onEventHandler)
+            when (viewState.connectionState) {
+                is ConnectionUiState.DISCONNECTED -> {
+                    StartConnectionButton(onEventHandler = onEventHandler)
+                }
+                is ConnectionUiState.CONNECTING -> {
+                    LoadingProgressBar()
+                }
+                is ConnectionUiState.CONNECTED -> {
+                    QuasarDataCard(viewState = viewState)
+                    SourcesDataCard(viewState = viewState)
+                    StatisticsDataCard(
+                        viewState = viewState,
+                        onEventHandler = onEventHandler
+                    )
+                    StopConnectionButton(onEventHandler = onEventHandler)
+                }
             }
         }
     }

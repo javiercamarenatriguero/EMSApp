@@ -8,7 +8,11 @@ data class UiState(
     val buildingDemandPower: Float = 0.0f,
     val solarPower: Float = 0.0f,
     val gridPower: Float = 0.0f,
-    val isConnectionStopped: Boolean = false,
-    val isConnectionLoading: Boolean = false,
-    val isConnectionError: Boolean = false
+    val connectionState: ConnectionUiState = ConnectionUiState.DISCONNECTED
 )
+
+sealed class ConnectionUiState {
+    object CONNECTED: ConnectionUiState()
+    object DISCONNECTED: ConnectionUiState()
+    object CONNECTING: ConnectionUiState()
+}

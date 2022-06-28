@@ -31,9 +31,7 @@ class HomeViewModel @Inject constructor(
 
     init {
         updateState(
-            isConnectionStopped = true,
-            isConnectionLoading = false,
-            isConnectionError = false
+            connectionState = ConnectionUiState.DISCONNECTED
         )
     }
 
@@ -43,16 +41,12 @@ class HomeViewModel @Inject constructor(
                 when (response) {
                     is StartLiveDataConnectionResponse.Success -> {
                         updateState(
-                            isConnectionLoading = false,
-                            isConnectionError = false,
-                            isConnectionStopped = false
+                            connectionState = ConnectionUiState.CONNECTED
                         )
                     }
                     is StartLiveDataConnectionResponse.Loading -> {
                         updateState(
-                            isConnectionLoading = true,
-                            isConnectionError = false,
-                            isConnectionStopped = false
+                            connectionState = ConnectionUiState.CONNECTING
                         )
                     }
                     is StartLiveDataConnectionResponse.OnData -> {
@@ -63,16 +57,12 @@ class HomeViewModel @Inject constructor(
                             quasarsPower = response.energyLiveData.quasarsPower,
                             buildingDemandPower = response.energyLiveData.buildingPowerDemand,
                             solarPower = response.energyLiveData.solarPower,
-                            gridPower = response.energyLiveData.gridPower,
-                            isConnectionError = false,
-                            isConnectionLoading = false
+                            gridPower = response.energyLiveData.gridPower
                         )
                     }
                     is StartLiveDataConnectionResponse.Error -> {
                         updateState(
-                            isConnectionLoading = false,
-                            isConnectionError = true,
-                            isConnectionStopped = true
+                            connectionState = ConnectionUiState.DISCONNECTED
                         )
                     }
                 }
@@ -86,21 +76,15 @@ class HomeViewModel @Inject constructor(
                 when (response) {
                     is StopLiveDataConnectionResponse.Success ->
                         updateState(
-                            isConnectionError = false,
-                            isConnectionLoading = false,
-                            isConnectionStopped = true
+                            connectionState = ConnectionUiState.DISCONNECTED
                         )
                     is StopLiveDataConnectionResponse.Error ->
                         updateState(
-                            isConnectionError = true,
-                            isConnectionLoading = false,
-                            isConnectionStopped = true
+                            connectionState = ConnectionUiState.DISCONNECTED
                         )
                     is StopLiveDataConnectionResponse.Loading ->
                         updateState(
-                            isConnectionError = false,
-                            isConnectionLoading = true,
-                            isConnectionStopped = false
+                            connectionState = ConnectionUiState.CONNECTED
                         )
                 }
             }
@@ -151,9 +135,7 @@ class HomeViewModel @Inject constructor(
         buildingDemandPower: Float = state.buildingDemandPower,
         solarPower: Float = state.solarPower,
         gridPower: Float = state.gridPower,
-        isConnectionStopped: Boolean = state.isConnectionStopped,
-        isConnectionLoading: Boolean = state.isConnectionLoading,
-        isConnectionError: Boolean = state.isConnectionError
+        connectionState: ConnectionUiState = state.connectionState
     ) {
         state = UiState(
             quasarsCurrentEnergy = quasarsCurrentEnergy,
@@ -163,9 +145,7 @@ class HomeViewModel @Inject constructor(
             buildingDemandPower = buildingDemandPower,
             solarPower = solarPower,
             gridPower = gridPower,
-            isConnectionStopped = isConnectionStopped,
-            isConnectionLoading = isConnectionLoading,
-            isConnectionError = isConnectionError
+            connectionState = connectionState
         )
     }
 }
