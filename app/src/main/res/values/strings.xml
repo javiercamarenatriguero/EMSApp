@@ -11,4 +11,8 @@
     <string name="home_building_demand_text">Building Demand Power</string>
     <string name="home_statistics_value_text">%1$s \%%</string>
     <string name="home_see_more_details_text">Click to see more details</string>
+    <string name="home_start_button_text">Start Connection</string>
+    <string name="home_stop_button_text">Stop Connection</string>
+    <!-- Details -->
+
 </resources>

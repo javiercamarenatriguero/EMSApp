@@ -11,7 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.akole.energyproviderapp.R
 import com.akole.energyproviderapp.ui.screens.home.cards.QuasarDataCard
 import com.akole.energyproviderapp.ui.screens.home.cards.SourcesDataCard
 import com.akole.energyproviderapp.ui.screens.home.cards.StatisticsDataCard
@@ -73,7 +75,7 @@ fun StartConnectionButton(
         onClick = { onEventHandler(HomeViewModel.ViewEvent.StartConnectionClicked) },
         modifier = Modifier.padding(30.dp)
     ) {
-        Text(text = "Start Connection")
+        Text(text = stringResource(id = R.string.home_start_button_text))
     }
 }
 
@@ -81,9 +83,8 @@ fun StartConnectionButton(
 fun StopConnectionButton(
     onEventHandler: (HomeViewModel.ViewEvent) -> Unit
 ) {
-    Button(
-        onClick = { onEventHandler(HomeViewModel.ViewEvent.StopConnectionClicked) }
+    Button(onClick = { onEventHandler(HomeViewModel.ViewEvent.StopConnectionClicked) }
     ) {
-        Text(text = "Stop Connection")
+        Text(text = stringResource(id = R.string.home_stop_button_text))
     }
 }
