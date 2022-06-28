@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.akole.energyproviderapp.R
@@ -27,9 +28,12 @@ fun QuasarDataCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp),
-        elevation = 10.dp
+        elevation = 5.dp
     ) {
-        Column {
+        Column (
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            CardTitle(text = stringResource(id = R.string.home_energy_description))
             QuasarEnergyData(
                 quasarsTotalChargedEnergy = viewState.totalQuasarsChargedEnergy,
                 quasarsTotalDischargedEnergy = viewState.totalQuasarsDischargedEnergy

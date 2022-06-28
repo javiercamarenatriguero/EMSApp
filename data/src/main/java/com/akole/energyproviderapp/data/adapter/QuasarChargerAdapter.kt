@@ -95,7 +95,7 @@ class QuasarChargerAdapter {
         // Emulated EMS params (random values)
         private const val SOLAR_POWER_BASE_VALUE = 30f
         private val SOLAR_POWER_DIFF_VALUES = (-20..20)
-        private const val GRID_POWER_BASE_VALUE = 30f
+        private const val GRID_POWER_BASE_VALUE = 40f
         private val GRID_POWER_DIFF_VALUES = (-10..10)
         private const val BUILDING_POWER_BASE_VALUE = 80f
         private val BUILDING_POWER_DIFF_VALUES = (-20..20)

@@ -13,6 +13,9 @@
     <string name="home_see_more_details_text">Click to see more details</string>
     <string name="home_start_button_text">Start Connection</string>
     <string name="home_stop_button_text">Stop Connection</string>
+    <string name="home_statistics_description">Supplied % of power to the building</string>
+    <string name="home_sources_description">Current sources\' power</string>
+    <string name="home_energy_description">Quasar\'s accumulated energy</string>
 
     <!-- Details -->
     <string name="details_solar_label">Solar Power (kW)</string>

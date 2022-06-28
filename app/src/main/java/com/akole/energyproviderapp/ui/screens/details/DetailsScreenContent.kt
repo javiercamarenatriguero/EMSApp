@@ -19,8 +19,6 @@ fun DetailsScreenContent(
             .verticalScroll(rememberScrollState())
     ) {
         Header()
-        Body(
-            viewState = viewState
-        )
+        Body(viewState = viewState)
     }
 }

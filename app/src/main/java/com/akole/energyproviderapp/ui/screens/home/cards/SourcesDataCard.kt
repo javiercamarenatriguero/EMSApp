@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.akole.energyproviderapp.R
@@ -29,9 +30,12 @@ fun SourcesDataCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp),
-        elevation = 10.dp
+        elevation = 5.dp,
     ) {
-        Column {
+        Column (
+            verticalArrangement = Arrangement.spacedBy(5.dp)
+        ) {
+            CardTitle(text = stringResource(id = R.string.home_sources_description))
             Row (
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround

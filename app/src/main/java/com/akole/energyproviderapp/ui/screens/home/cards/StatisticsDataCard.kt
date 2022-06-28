@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.akole.energyproviderapp.R
@@ -28,8 +29,8 @@ fun StatisticsDataCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp),
-        elevation = 10.dp,
+            .padding(15.dp),
+        elevation = 5.dp,
         onClick = {
             onEventHandler(HomeViewModel.ViewEvent.SeeDetailsClicked)
         }
@@ -37,6 +38,7 @@ fun StatisticsDataCard(
         Column (
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ){
+            CardTitle(text = stringResource(id = R.string.home_statistics_description))
             StatisticsPowerData(
                 icon = Icons.Default.Power,
                 value = viewState.getGridPowerPercentageToBuilding(),
@@ -71,7 +73,7 @@ fun StatisticsPowerData(
     Row (
         modifier = Modifier
             .fillMaxWidth()
-            .padding(5.dp),
+            .padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
 

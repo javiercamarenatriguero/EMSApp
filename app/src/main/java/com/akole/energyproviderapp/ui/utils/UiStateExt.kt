@@ -3,7 +3,9 @@ package com.akole.energyproviderapp.ui.utils
 import com.akole.energyproviderapp.ui.screens.home.UiState
 
 internal fun UiState.getGridPowerPercentageToBuilding() : Float {
-    val result = 100 * (buildingDemandPower + quasarsPower - solarPower) / buildingDemandPower
+    // According to the API, the car is charged JUST with grid power
+    val powerToBuildingFromGrid = if (quasarsPower > 0) gridPower - quasarsPower else gridPower
+    val result = 100 * powerToBuildingFromGrid / buildingDemandPower
     return if (result.equals(Float.NaN)) 0.0f else result
 }
 

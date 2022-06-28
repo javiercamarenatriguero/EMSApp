@@ -10,6 +10,7 @@ import com.akole.energyproviderapp.ui.utils.parseToChartSeriesData
 import hu.ma.charts.legend.data.LegendPosition
 import hu.ma.charts.line.data.AxisLabel
 import hu.ma.charts.line.data.ChartColors
+import hu.ma.charts.line.data.DrawAxis
 import hu.ma.charts.line.data.LineChartData
 
 @Composable
@@ -31,6 +32,8 @@ fun LineChart(
 
             ),
             yLabels = listOf(
+                AxisLabel(-80f, "-80 kW"),
+                AxisLabel(-60f, "-40 kW"),
                 AxisLabel(-40f, "-40 kW"),
                 AxisLabel(-20f, "-20 kW"),
                 AxisLabel(20f, "20 kW"),
@@ -38,6 +41,7 @@ fun LineChart(
                 AxisLabel(60f, "60 kW"),
                 AxisLabel(80f, "80 kW"),
             ),
+            drawAxis = DrawAxis.Both,
             xAxisTypeface = axisLabelTextStyle,
             yAxisTypeface = axisLabelTextStyle,
             horizontalLines = true,
