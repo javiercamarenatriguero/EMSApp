@@ -10,4 +10,11 @@ dependencies {
     // Hilt
     implementation "com.google.dagger:hilt-core:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    /////// Test
+    testImplementation 'junit:junit:4.13.2'
+    // Mockk
+    testImplementation "io.mockk:mockk:1.12.4"
+    // Coroutines
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1"
 }
