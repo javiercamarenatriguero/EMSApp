@@ -1,6 +1,7 @@
 package com.akole.energyproviderapp.ui.utils.home
 
 import com.akole.energyproviderapp.ui.screens.home.UiState
+import kotlin.math.abs
 
 internal fun UiState.getGridPowerPercentageToBuilding() : Float {
     // According to the API, the car is charged JUST with grid power
@@ -29,6 +30,6 @@ internal fun UiState.getCarElectricPowerPercentageToBuilding() : Float {
 
 private fun getPercentage(sourcePower: Float, totalPower: Float): Float {
     val result = 100 * sourcePower / totalPower
-    return if (result.equals(Float.NaN)) 0.0f else result
+    return if (abs(result).equals(Float.POSITIVE_INFINITY)) 0.0f else result
 }
 

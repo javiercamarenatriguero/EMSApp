@@ -7,7 +7,7 @@ import com.akole.energyproviderapp.ui.utils.home.getSolarPowerPercentageToBuildi
 import org.junit.Assert
 import org.junit.Test
 
-class UiStateTest {
+class UiStateExtTest {
 
     @Test
     internal fun `CHECK Percentages values WHEN quasars power is positive`() {
@@ -49,6 +49,30 @@ class UiStateTest {
         Assert.assertEquals(37.5f, solarPercentage)
         Assert.assertEquals(12.5f, quasarPercentage)
         Assert.assertEquals(100f,
+            quasarPercentage
+                    + gridPercentage
+                    + solarPercentage
+        )
+    }
+
+    @Test
+    internal fun `CHECK Percentages values equals 0 WHEN building power is zero`() {
+        val uiState = UiState(
+            quasarsPower = MOCK_QUASAR_NEGATIVE_POWER,
+            gridPower = MOCK_GRID_POWER,
+            solarPower = MOCK_SOLAR_POWER,
+            buildingDemandPower = 0.0f
+        )
+
+        val solarPercentage = uiState.getSolarPowerPercentageToBuilding()
+        val gridPercentage = uiState.getGridPowerPercentageToBuilding()
+        val quasarPercentage = uiState.getCarElectricPowerPercentageToBuilding()
+
+        // Verified values
+        Assert.assertEquals(0.0f, gridPercentage)
+        Assert.assertEquals(0.0f, solarPercentage)
+        Assert.assertEquals(0.0f, quasarPercentage)
+        Assert.assertEquals(0.0f,
             quasarPercentage
                     + gridPercentage
                     + solarPercentage
