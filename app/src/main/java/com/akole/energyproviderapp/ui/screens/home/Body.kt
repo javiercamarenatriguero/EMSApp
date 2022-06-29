@@ -81,8 +81,9 @@ fun StartConnectionButton(
 fun StopConnectionButton(
     onEventHandler: (HomeViewModel.ViewEvent) -> Unit
 ) {
-    Button(onClick = { onEventHandler(HomeViewModel.ViewEvent.StopConnectionClicked) }
-    ) {
+    Button(onClick = {
+        onEventHandler(HomeViewModel.ViewEvent.StopConnectionClicked)
+    }) {
         Text(text = stringResource(id = R.string.home_stop_button_text))
     }
 }
