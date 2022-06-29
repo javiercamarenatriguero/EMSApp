@@ -1,32 +1,24 @@
 # EnergyApp App
-Wedding application in order to get basic information about the location, date and some other details.
-In addition to that, this is a tool for guests in so as to they could upload songs for the disco and taken photos during the day.
+EnergyApp application consists of a basic tool in order to show EMS information related to the power suppliers & energy consumption.
 Following are some of the features available on the app:
 
-* Wedding basic information: Date, time, people and locations
-* Maps points: See where the different locations are pointed on Google Maps tool
-* Songs: See the playlist for the disco and add a song suggestion
-* Pictures: See the gallery of the weeding and upload your photos as a guest
+* Charged/Discharged energy of the Quasar charger in kWh
+* Sources' supplied power to the Building in realtime (Energy Live Data) in kW
+* Statistics data about percentage contribution of each power supplier to the building.
+* Start / Stop connection controls
+* Line chart visualization of the cached data (Energy Historical Data)
+* Emulated fake data source (QuasarDataSourceAdapter) such as a Bluetooth/REST/DDBB adapter. It provides with random data of power sources
 
 ---
 ## Technical details
-* Clean code architecture (pending create Android modules for each layer)
+* Clean code architecture
+* Android Modules for each clean code's layer in order to keep each layer isolated from library dependencies
 * MVVM Design patterns & UI State handling
 * 100% Kotlin & Jetpack Compose
 * Kotlin Coroutines - Flows
 * Hilt for Dependency Injection
 * Compose Navigation
-* Google Maps for Jetpack Compose
-* Firebase services:
-
-    * -> Crashlytics
-    * -> Analytics
-    * -> Performance
-    * -> Firestore (images)
-    * -> Realtime database (songs)
-
-* Uploaded on Play Store (Until 10th of June)
-
+* Unit & UI Test
 ---
 ### Screenshots
 ![Demo](https://bitbucket.org/javi_hetfield/energyapp/raw/master/screenshots/energyapp.gif)
@@ -51,10 +43,6 @@ Following are some of the features available on the app:
 * Kotlin 1.6.10
 ---
 
-### Version
-* v1.6
-
----
 ### IDE tools
 * Android Studio Chipmunk | 2021.2.1 Patch 1
 * Bitbucket Repository
@@ -67,10 +55,8 @@ Following are some of the features available on the app:
 
 ---
 ### TODOs
-* Create Android Modules for Domain & Data Layers (Currently just isolated in packages)
-* Improvements on Images visualization: Pagination, Error Management...
-* Stronger security for Firebase access
-* Add more tests
+* Add more UI Tests for screens with HiltAndroidTest integration
+* Improvements on Images visualization
 
 ---
 ### Development & Design
