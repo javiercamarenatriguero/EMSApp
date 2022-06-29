@@ -23,5 +23,7 @@
     <string name="details_quasar_label">Quasar Power (kW)</string>
     <string name="details_building_label">Building Demand Power (kW)</string>
     <string name="details_empty_data">There is no data recorded. Please check it out later.</string>
+    <string name="home_toolbar">Dashboard</string>
+    <string name="details_toolbar">Details</string>
 
 </resources>

@@ -14,7 +14,7 @@ fun Header() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(250.dp)
+            .height(200.dp)
     ) {
         val painter = rememberAsyncImagePainter(R.drawable.logo)
         Image(

@@ -29,7 +29,6 @@ fun LineChart(
                 gridLabel = stringResource(id = R.string.details_grid_label),
                 quasarLabel = stringResource(id = R.string.details_quasar_label),
                 buildingLabel = stringResource(id = R.string.details_building_label)
-
             ),
             yLabels = listOf(
                 AxisLabel(-80f, "-80 kW"),
