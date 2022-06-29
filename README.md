@@ -8,7 +8,6 @@ Following are some of the features available on the app:
 * Start / Stop connection controls
 * Line chart visualization of the cached data (Energy Historical Data)
 * Emulated fake data source (QuasarDataSourceAdapter) such as a Bluetooth/REST/DDBB adapter. It provides with random data of power sources
-
 ---
 ## Technical details
 * Clean code architecture
@@ -32,8 +31,7 @@ Following are some of the features available on the app:
 ---
 
 ### External Libraries
-* [Firebase](https://firebase.google.com/docs/android/setup): Crashlytics / Firebase Storage / Firebase realtime database
-* [Accompanist](https://github.com/google/accompanist): Complementary library for Jetpack Compose
+* [compose-charts](https://github.com/humawork/compose-charts): Basic Line chart for Jetpack Compose (few alternatives)
 * [mockk](https://mockk.io/ANDROID.html): Mock Unit test library
 ---
 
@@ -57,6 +55,7 @@ Following are some of the features available on the app:
 ### TODOs
 * Add more UI Tests for screens with HiltAndroidTest integration
 * Improvements on Images visualization
+* Search for a better Line Chart view in order to show Time series
 
 ---
 ### Development & Design
