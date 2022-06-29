@@ -94,11 +94,11 @@ class QuasarChargerAdapter {
         private const val LIVE_DATA_SAMPLING_RATE_MS = 1000L
         // Emulated EMS params (random values)
         private const val SOLAR_POWER_BASE_VALUE = 30f
-        private val SOLAR_POWER_DIFF_VALUES = (-20..20)
-        private const val GRID_POWER_BASE_VALUE = 40f
+        private val SOLAR_POWER_DIFF_VALUES = (-10..10)
+        private const val GRID_POWER_BASE_VALUE = 20f
         private val GRID_POWER_DIFF_VALUES = (-10..10)
-        private const val BUILDING_POWER_BASE_VALUE = 80f
-        private val BUILDING_POWER_DIFF_VALUES = (-20..20)
+        private const val BUILDING_POWER_BASE_VALUE = 60f
+        private val BUILDING_POWER_DIFF_VALUES = (-10..10)
 
         // Generate Mock Live data coming from Quasar Charger as defined on API
         fun getMockQuasarEnergyLiveData(): QuasarEnergyLiveData {

@@ -30,7 +30,7 @@ fun Body(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .height(150.dp)
         )
         Column (
             horizontalAlignment = Alignment.CenterHorizontally,

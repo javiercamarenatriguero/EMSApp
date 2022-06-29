@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">EnergyProviderApp</string>
+    <string name="app_name">Energy App</string>
     <!-- Home -->
+    <string name="home_toolbar">Dashboard</string>
     <string name="home_quasar_discharged_energy_text">Total Discharged Energy</string>
     <string name="home_quasar_charged_energy_text">Total Charged Energy</string>
     <string name="home_energy_value_text">%1$s kWh</string>
@@ -18,12 +19,11 @@
     <string name="home_energy_description">Quasar\'s accumulated energy</string>
 
     <!-- Details -->
+    <string name="details_toolbar">Details</string>
     <string name="details_solar_label">Solar Power (kW)</string>
     <string name="details_grid_label">Grid Power (kW)</string>
     <string name="details_quasar_label">Quasar Power (kW)</string>
     <string name="details_building_label">Building Demand Power (kW)</string>
     <string name="details_empty_data">There is no data recorded. Please check it out later.</string>
-    <string name="home_toolbar">Dashboard</string>
-    <string name="details_toolbar">Details</string>
 
 </resources>
