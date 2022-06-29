@@ -4,10 +4,10 @@ import com.akole.energyproviderapp.domain.datasources.EMSDataSource
 import kotlinx.coroutines.flow.Flow
 
 class StopLiveDataConnection(
-    private val EMSDataSource: EMSDataSource
+    private val emsDataSource: EMSDataSource
 ) {
     suspend operator fun invoke(): Flow<StopLiveDataConnectionResponse> =
-        EMSDataSource.stopLiveDataConnection()
+        emsDataSource.stopLiveDataConnection()
 }
 
 sealed class StopLiveDataConnectionResponse {
