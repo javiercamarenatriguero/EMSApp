@@ -1,5 +1,6 @@
 package com.akole.energyproviderapp.ui.screens.home
 
+import android.content.Context
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
@@ -12,10 +13,10 @@ import org.junit.runner.RunWith
 import org.junit.Rule
 
 @RunWith(AndroidJUnit4::class)
-class HomeScreenTest {
+class HomeScreenContentTest {
     @get:Rule
     val composeTestRule = createComposeRule()
-    val context = InstrumentationRegistry.getInstrumentation().targetContext
+    private val context: Context = InstrumentationRegistry.getInstrumentation().targetContext
 
     @Test
     fun show_start_connection_button_when_disconnected(): Unit = with(composeTestRule) {

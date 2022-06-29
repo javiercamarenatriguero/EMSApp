@@ -85,6 +85,5 @@ class UiStateExtTest {
         private const val MOCK_BUILDING_POWER = 80.0f
         private const val MOCK_QUASAR_POSITIVE_POWER = 20.0f
         private const val MOCK_QUASAR_NEGATIVE_POWER = -10.0f
-
     }
 }
