@@ -64,7 +64,7 @@ class DetailsViewModelTest {
     }
 
     @Test
-    internal fun `GIVEN a initialized ViewModel WHEN getHistoricalData is called AND its response Success THEN the uIState's data is updated`() {
+    internal fun `GIVEN a initialized ViewModel WHEN getHistoricalData is called AND its response is Success THEN the uIState's data is updated`() {
         runTest {
             coEvery { getHistoricalData() } returns flowOf(GetHistoricalDataResponse.Success(listOf(MOCK_HISTORICAL_DATA)))
             viewModel = DetailsViewModel(

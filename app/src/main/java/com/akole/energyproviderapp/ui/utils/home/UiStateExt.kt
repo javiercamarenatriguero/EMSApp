@@ -1,4 +1,4 @@
-package com.akole.energyproviderapp.ui.utils
+package com.akole.energyproviderapp.ui.utils.home
 
 import com.akole.energyproviderapp.ui.screens.home.UiState
 

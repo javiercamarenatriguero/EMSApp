@@ -1,4 +1,4 @@
-package com.akole.energyproviderapp.ui.utils
+package com.akole.energyproviderapp.ui.utils.details
 
 import androidx.compose.ui.graphics.Color
 import com.akole.energyproviderapp.domain.models.EnergyHistoricalData

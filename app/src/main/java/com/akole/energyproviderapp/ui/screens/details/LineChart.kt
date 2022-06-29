@@ -6,7 +6,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.akole.energyproviderapp.R
-import com.akole.energyproviderapp.ui.utils.parseToChartSeriesData
+import com.akole.energyproviderapp.ui.utils.details.parseToChartSeriesData
 import hu.ma.charts.legend.data.LegendPosition
 import hu.ma.charts.line.data.AxisLabel
 import hu.ma.charts.line.data.ChartColors
