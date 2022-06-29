@@ -96,6 +96,7 @@ class HomeViewModel @Inject constructor(
             ViewEvent.SeeDetailsClicked -> onSeeDetailsClicked()
             ViewEvent.StartConnectionClicked -> onStartConnectionButtonClicked()
             ViewEvent.StopConnectionClicked -> onStopConnectionButtonClicked()
+            ViewEvent.BackClicked -> onBackClicked()
         }
     }
 
@@ -111,6 +112,13 @@ class HomeViewModel @Inject constructor(
         stopLiveDataService()
     }
 
+    private fun onBackClicked() {
+        if (state.connectionState is ConnectionUiState.CONNECTED) {
+            stopLiveDataService()
+        }
+    }
+
+
     private fun emit(event: OneShotEvent) {
         viewModelScope.launch {
             _oneShotEvents.send(event)
@@ -125,6 +133,7 @@ class HomeViewModel @Inject constructor(
         object StartConnectionClicked: ViewEvent
         object StopConnectionClicked: ViewEvent
         object SeeDetailsClicked: ViewEvent
+        object BackClicked: ViewEvent
     }
 
     private fun updateState(
